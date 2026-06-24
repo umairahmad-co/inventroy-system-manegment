@@ -1,12 +1,27 @@
 from tkinter import *
 
+#Functionality Part
+
+def employee_form():
+    employee_frame=Frame(window,width=1070,height=567)
+    employee_frame.place(x=200,y=100)
+    heading_label=Label(employee_frame,text="Manage Employee Details",font=('times new roman',16,'bold'),bg='#0f4d7d',fg='white')
+    heading_label.place(x=0,y=0,relwidth=1)
+
+
+
+
+
+
+#GUI Part
+
 window = Tk()
 
 
 window.title("Dashboard")
 window.geometry("1270x668+0+0")
 #window.geometry("1524x784+0+0")
-window.resizable(0,0)
+#window.resizable(0,0)
 window.configure(bg="white")
 
 bg_image= PhotoImage(file="logo.png")
@@ -38,7 +53,7 @@ menu_label=Label(left_frame,text='Menu',font=('times new roman',20),bg='#009688'
 menu_label.pack(fill=X)
 
 employee_icon=PhotoImage(file="employee-card.png")
-employee_button=Button(left_frame,image= employee_icon,compound=LEFT,text=' Employees',font=('times new roman',20),anchor='w',padx=10)
+employee_button=Button(left_frame,image= employee_icon,compound=LEFT,text=' Employees',font=('times new roman',20),anchor='w',padx=10,command=employee_form)
 employee_button.pack(fill=X)
 
 supplier_icon=PhotoImage(file="supplier.png")
@@ -58,7 +73,7 @@ sale_button=Button(left_frame,image=sale_icon,compound=LEFT,text=' Sales',font=(
 sale_button.pack(fill=X)
 
 exit_icon=PhotoImage(file="exit.png")
-exit_button=Button(left_frame,image=exit_icon,compound=LEFT,text=' exit',font=('times new roman',20),anchor='w',padx=10)
+exit_button=Button(left_frame,image=exit_icon,compound=LEFT,text=' Exit',font=('times new roman',20),anchor='w',padx=10)
 exit_button.pack(fill=X)
 
 #<------This is the Total Employees Box on Dashboard ----------->
@@ -68,7 +83,7 @@ emp_frame.place(x=400,y=125,width=250,height=170)
 
 total_emp_icon=PhotoImage(file="total_employee.png")
 total_emp_icon_label=Label(emp_frame,image=total_emp_icon,bg="#2C3E50")
-total_emp_icon_label.pack()
+total_emp_icon_label.pack(pady=10)
 
 total_emp_label=Label(emp_frame,text='Total Employees',bg="#2C3E50",fg="white",font=('times new roman',15,'bold'))
 total_emp_label.pack()
@@ -78,22 +93,63 @@ total_emp_count_label.pack()
 
 #<------This is the Total Suppliers Box on Dashboard ----------->
 
-sup_frame=Frame(window,bg="#2C3E50",bd=3,relief=RIDGE)
+sup_frame=Frame(window,bg="#8E44AD",bd=3,relief=RIDGE)
 sup_frame.place(x=800,y=125,width=250,height=170)
 
 total_sup_icon=PhotoImage(file="total_sup.png")
-total_sup_icon_label=Label(sup_frame,image=total_sup_icon,bg="#2C3E50")
-total_sup_icon_label.pack()
+total_sup_icon_label=Label(sup_frame,image=total_sup_icon,bg="#8E44AD")
+total_sup_icon_label.pack(pady=10)
 
-total_emp_label=Label(sup_frame,text='Total Suppliers',bg="#2C3E50",fg="white",font=('times new roman',15,'bold'))
-total_emp_label.pack()
+total_sup_label=Label(sup_frame,text='Total Suppliers',bg="#8E44AD",fg="white",font=('times new roman',15,'bold'))
+total_sup_label.pack()
 
-total_emp_count_label=Label(sup_frame,text='0',bg="#2C3E50",fg="white",font=('times new roman',30,'bold'))
-total_emp_count_label.pack()
+total_sup_count_label=Label(sup_frame,text='0',bg="#8E44AD",fg="white",font=('times new roman',30,'bold'))
+total_sup_count_label.pack()
 
+#<------This is the Total Category Box on Dashboard ----------->
 
+cat_frame=Frame(window,bg="#27AE60",bd=3,relief=RIDGE)
+cat_frame.place(x=400,y=310,width=250,height=170)
 
+total_cat_icon=PhotoImage(file="total_cat.png")
+total_cat_icon_label=Label(cat_frame,image=total_cat_icon,bg="#27AE60")
+total_cat_icon_label.pack(pady=10)
 
+total_cat_label=Label(cat_frame,text='Total Category',bg="#27AE60",fg="white",font=('times new roman',15,'bold'))
+total_cat_label.pack()
+
+total_cat_count_label=Label(cat_frame,text='0',bg="#27AE60",fg="white",font=('times new roman',30,'bold'))
+total_cat_count_label.pack()
+
+#<------This is the Total Products Box on Dashboard ----------->
+
+prod_frame=Frame(window,bg="#2C3E50",bd=3,relief=RIDGE)
+prod_frame.place(x=800,y=310,width=250,height=170)
+
+total_prod_icon=PhotoImage(file="total_product.png")
+total_prod_icon_label=Label(prod_frame,image=total_prod_icon,bg="#2C3E50")
+total_prod_icon_label.pack(pady=10)
+
+total_prod_label=Label(prod_frame,text='Total Products',bg="#2C3E50",fg="white",font=('times new roman',15,'bold'))
+total_prod_label.pack()
+
+total_prod_count_label=Label(prod_frame,text='0',bg="#2C3E50",fg="white",font=('times new roman',30,'bold'))
+total_prod_count_label.pack()
+
+#<------This is the Total Sales Box on Dashboard ----------->
+
+sales_frame=Frame(window,bg="#E74C3C",bd=3,relief=RIDGE)
+sales_frame.place(x=600,y=495,width=250,height=170)
+
+total_sales_icon=PhotoImage(file="total_sales.png")
+total_sales_icon_label=Label(sales_frame,image=total_sales_icon,bg="#E74C3C")
+total_sales_icon_label.pack(pady=10)
+
+total_sales_label=Label(sales_frame,text='Total Sales',bg="#E74C3C",fg="white",font=('times new roman',15,'bold'))
+total_sales_label.pack()
+
+total_sales_count_label=Label(sales_frame,text='0',bg="#E74C3C",fg="white",font=('times new roman',30,'bold'))
+total_sales_count_label.pack()
 
 
 
