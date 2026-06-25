@@ -1,12 +1,34 @@
 from tkinter import *
+from tkinter import ttk
+
 
 #Functionality Part
 
+
 def employee_form():
-    employee_frame=Frame(window,width=1070,height=567)
+    global back_arrow_image
+    employee_frame=Frame(window,width=1070,height=567,bg='white')
     employee_frame.place(x=200,y=100)
     heading_label=Label(employee_frame,text="Manage Employee Details",font=('times new roman',16,'bold'),bg='#0f4d7d',fg='white')
     heading_label.place(x=0,y=0,relwidth=1)
+
+    # this section is to arrow icon on Employee Details Page
+
+    back_arrow_image=PhotoImage(file='left-arrow.png')
+    back_button=Button(employee_frame,image=back_arrow_image,bd=0,cursor='hand2',bg='white',command=lambda:employee_frame.place_forget())
+    back_button.place(x=10,y=30)
+
+    #this section is to set search By on Employee Details Page
+
+    top_frame=Frame(employee_frame,bg='white')
+    top_frame.place(x=0,y=60,relwidth=1,relheight=235)
+    search_frame=Frame(top_frame)
+    search_frame.pack()
+    search_combobox=ttk.Combobox(search_frame,values=('Id','Name','Email'),font=('times new roman',12),state='readonly')
+    search_combobox.set('Search By')
+    search_combobox.grid(column=0,row=0)
+
+
 
 
 
