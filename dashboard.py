@@ -46,10 +46,43 @@ def employee_form():
 
     # this section is to set Discription Area on Employee Details Page
 
-    employee_treeview=ttk.Treeview(top_frame,columns=('empid','name','email'),show='headings')
+    horizontal_scrollbar=Scrollbar(top_frame,orient=HORIZONTAL)
+    vertical_scrollbar=Scrollbar(top_frame,orient=VERTICAL)
+
+    employee_treeview=ttk.Treeview(top_frame,columns=('emid','name','email','gender','dob','contact','employee_type','education','work_shift','address','date_of_join','salary','user_type'),show='headings',
+                                   yscrollcommand=vertical_scrollbar.set,xscrollcommand=horizontal_scrollbar.set)
+    horizontal_scrollbar.pack(side=BOTTOM)
+    vertical_scrollbar.pack(side=RIGHT)
     employee_treeview.pack(pady=10)
 
+    employee_treeview.heading('emid',text='ID')
+    employee_treeview.heading('name',text='Name')
+    employee_treeview.heading('email',text='Email')
+    employee_treeview.heading('gender',text='Gender')
+    employee_treeview.heading('dob',text='Date of Birth')
+    employee_treeview.heading('contact',text='Contact')
+    employee_treeview.heading('employee_type',text='Employee Type')
+    employee_treeview.heading('education',text='Education')
+    employee_treeview.heading('work_shift',text='Work Shift')
+    employee_treeview.heading('address',text='Address')
+    employee_treeview.heading('date_of_join',text='Date of Join')
+    employee_treeview.heading('salary',text='Salary')
+    employee_treeview.heading('user_type',text='User Type')
 
+
+    employee_treeview.column('emid', width=60, anchor='center')
+    employee_treeview.column('name', width=140, anchor='center')
+    employee_treeview.column('email', width=180, anchor='center')
+    employee_treeview.column('gender', width=80, anchor='center')
+    employee_treeview.column('dob', width=100, anchor='center')
+    employee_treeview.column('contact', width=100, anchor='center')
+    employee_treeview.column('employee_type', width=120, anchor='center')
+    employee_treeview.column('education', width=120, anchor='center')
+    employee_treeview.column('work_shift', width=100, anchor='center')
+    employee_treeview.column('address', width=200, anchor='center')
+    employee_treeview.column('date_of_join', width=100, anchor='center')
+    employee_treeview.column('salary', width=140, anchor='center')
+    employee_treeview.column('user_type', width=140, anchor='center')
 
 
 
