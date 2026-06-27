@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import Treeview
+from tkcalendar import DateEntry
 
 
 #Functionality Part
@@ -92,10 +93,64 @@ def employee_form():
     #set te putting value lable
 
     detail_frame=Frame(employee_frame)
-    detail_frame.place(x=0,y=300)
+    detail_frame.place(x=0,y=385)
 
+    emid_label=Label(detail_frame,text='ID',font=('times new roman',12))
+    emid_label.grid(row=0,column=0,padx=20,pady=10,sticky='w')
+    emid_entry=Entry(detail_frame,font=('times new roman',12),bg='light yellow')
+    emid_entry.grid(row=0,column=1,padx=20,pady=10)
 
+    name_label=Label(detail_frame, text='Name', font=('times new roman', 12))
+    name_label.grid(row=0, column=2, padx=20, pady=10,sticky='w')
+    name_entry =Entry(detail_frame, font=('times new roman', 12), bg='light yellow')
+    name_entry.grid(row=0, column=3, padx=20, pady=10)
 
+    email_label=Label(detail_frame, text='Email', font=('times new roman', 12))
+    email_label.grid(row=0, column=4, padx=20, pady=10,sticky='w')
+    email_entry= Entry(detail_frame, font=('times new roman', 12), bg='light yellow')
+    email_entry.grid(row=0, column=5, padx=20, pady=10)
+
+    gender_label=Label(detail_frame, text='Gender', font=('times new roman', 12))
+    gender_label.grid(row=1, column=0, padx=20, pady=10,sticky='w')
+
+    gender_combobox=ttk.Combobox(detail_frame,values=('Male','Female'),font=('times new roman',12),width=18,state='readonly')
+    gender_combobox.set('Select Gender')
+    gender_combobox.grid(row=1, column=1)
+
+    dob_label = Label(detail_frame, text='Date of Birth', font=('times new roman', 12))
+    dob_label.grid(row=1, column=2, padx=20, pady=10,sticky='w')
+
+    dob_date_entry=DateEntry(detail_frame,width=18, font=('times new roman', 12),state='readonly',date_pattern='dd/MM/yyyy')
+    dob_date_entry.grid(row=1, column=3, padx=20, pady=10)
+
+    contact_label = Label(detail_frame, text='Contact', font=('times new roman', 12))
+    contact_label.grid(row=1, column=4, padx=20, pady=10,sticky='w')
+    contact_entry = Entry(detail_frame, font=('times new roman', 12), bg='light yellow')
+    contact_entry.grid(row=1, column=5, padx=20, pady=10)
+
+    employment_type_label = Label(detail_frame, text='Employment Type', font=('times new roman', 12))
+    employment_type_label.grid(row=2, column=0, padx=2,pady=10,sticky='w')
+
+    employment_type_combobox = ttk.Combobox(detail_frame, values=('Full Time', 'Part Time','Casual','Contract','Intern'), font=('times new roman', 12), width=18,
+                                   state='readonly')
+    employment_type_combobox.set('Select Type')
+    employment_type_combobox.grid(row=2, column=1)
+
+    gender_label = Label(detail_frame, text='Gender', font=('times new roman', 12))
+    gender_label.grid(row=1, column=0, padx=20, pady=10,sticky='w')
+
+    gender_combobox = ttk.Combobox(detail_frame, values=('Male', 'Female'), font=('times new roman', 12), width=18,
+                                   state='readonly')
+    gender_combobox.set('Select Gender')
+    gender_combobox.grid(row=1, column=1)
+
+    gender_label = Label(detail_frame, text='Gender', font=('times new roman', 12))
+    gender_label.grid(row=1, column=0, padx=20, pady=10,sticky='w')
+
+    gender_combobox = ttk.Combobox(detail_frame, values=('Male', 'Female'), font=('times new roman', 12), width=18,
+                                   state='readonly')
+    gender_combobox.set('Select Gender')
+    gender_combobox.grid(row=1, column=1)
 
 
 
