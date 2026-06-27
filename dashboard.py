@@ -9,7 +9,8 @@ from tkcalendar import DateEntry
 
 def employee_form():
     global back_arrow_image
-    employee_frame=Frame(window,width=1070,height=567,bg='white')
+    employee_frame = Frame(window,width=1336,height=700,bg='white')
+    #employee_frame=Frame(window,width=1336,height=567,bg='white')
     employee_frame.place(x=200,y=100)
     heading_label=Label(employee_frame,text="Manage Employee Details",font=('times new roman',16,'bold'),bg='#0f4d7d',fg='white')
     heading_label.place(x=0,y=0,relwidth=1)
@@ -23,7 +24,8 @@ def employee_form():
     #this section is to set search By on Employee Details Page
 
     top_frame=Frame(employee_frame,bg='white')
-    top_frame.place(x=0,y=60,relwidth=1,relheight=235)
+    top_frame.place(x=0, y=60, width=1336, height=290)
+    #top_frame.place(x=0,y=60,relwidth=1,relheight=235)
     search_frame=Frame(top_frame,bg='white')
     search_frame.pack()
     search_combobox=ttk.Combobox(search_frame,values=('Id','Name','Email'),font=('times new roman',12),state='readonly',justify='center')
@@ -53,7 +55,7 @@ def employee_form():
 
     employee_treeview=ttk.Treeview(top_frame,columns=('emid','name','email','gender','dob','contact','employee_type','education','work_shift','address','date_of_join','salary','user_type'),show='headings',
                                    yscrollcommand=vertical_scrollbar.set,xscrollcommand=horizontal_scrollbar.set)
-    horizontal_scrollbar.pack(side=TOP,fill=X,pady=(10,0))
+    horizontal_scrollbar.pack(side=BOTTOM,fill=X,pady=(0,0))
     vertical_scrollbar.pack(side=RIGHT,fill=Y,pady=(10,0))
     horizontal_scrollbar.config(command=employee_treeview.xview)
     vertical_scrollbar.config(command=employee_treeview.yview)
@@ -90,10 +92,11 @@ def employee_form():
     employee_treeview.column('salary', width=140, anchor='center')
     employee_treeview.column('user_type', width=140, anchor='center')
 
-    #set te putting value lable
+    #set te putting value label
 
-    detail_frame=Frame(employee_frame)
-    detail_frame.place(x=0,y=385)
+    detail_frame=Frame(employee_frame, bg="#f2f2f2")
+    detail_frame.place(x=0, y=360, width=1336, height=300)
+    #detail_frame.place(x=10,y=370,width=1300, height=300)
 
     emid_label=Label(detail_frame,text='ID',font=('times new roman',12))
     emid_label.grid(row=0,column=0,padx=20,pady=10,sticky='w')
@@ -136,21 +139,66 @@ def employee_form():
     employment_type_combobox.set('Select Type')
     employment_type_combobox.grid(row=2, column=1)
 
-    gender_label = Label(detail_frame, text='Gender', font=('times new roman', 12))
-    gender_label.grid(row=1, column=0, padx=20, pady=10,sticky='w')
+    education_label = Label(detail_frame, text='Education', font=('times new roman', 12))
+    education_label.grid(row=2, column=2, padx=20, pady=10,sticky='w')
 
-    gender_combobox = ttk.Combobox(detail_frame, values=('Male', 'Female'), font=('times new roman', 12), width=18,
+    education_options=["B.Tech","B.Com","M.Tech","B.Sc","M.Sc","BBA","MBA","LLB","LLM","B.Arch","M.Arch","F.Sc","Matric"]
+
+    education_combobox = ttk.Combobox(detail_frame, values=education_options, font=('times new roman', 12), width=18,
                                    state='readonly')
-    gender_combobox.set('Select Gender')
-    gender_combobox.grid(row=1, column=1)
+    education_combobox.set('Select Education')
+    education_combobox.grid(row=2, column=3)
 
-    gender_label = Label(detail_frame, text='Gender', font=('times new roman', 12))
-    gender_label.grid(row=1, column=0, padx=20, pady=10,sticky='w')
+    work_shift_label = Label(detail_frame, text='Work Shift', font=('times new roman', 12))
+    work_shift_label.grid(row=2, column=4, padx=20, pady=10,sticky='w')
 
-    gender_combobox = ttk.Combobox(detail_frame, values=('Male', 'Female'), font=('times new roman', 12), width=18,
+    work_shift_combobox = ttk.Combobox(detail_frame, values=('Morning', 'Evening','Night'), font=('times new roman', 12), width=18,
                                    state='readonly')
-    gender_combobox.set('Select Gender')
-    gender_combobox.grid(row=1, column=1)
+    work_shift_combobox.set('Select Shift')
+    work_shift_combobox.grid(row=2, column=5)
+
+    address_shift_label = Label(detail_frame, text='Address', font=('times new roman', 12))
+    address_shift_label.grid(row=3, column=0, padx=20, pady=10, sticky='w')
+    address_text=Text(detail_frame,width=20,height=2,font=('times new roman', 12),bg='light yellow')
+    address_text.grid(row=3, column=1,rowspan=2,sticky="ew",
+                  padx=15,
+                  pady=10)
+
+    doj_label = Label(detail_frame, text='Date of Joining', font=('times new roman', 12))
+    doj_label.grid(row=3, column=2, padx=20, pady=10, sticky='w')
+
+    doj_date_entry = DateEntry(detail_frame, width=18, font=('times new roman', 12), state='readonly',
+                               date_pattern='dd/MM/yyyy')
+    doj_date_entry.grid(row=3, column=3, padx=20, pady=10)
+
+    user_type_label = Label(detail_frame, text='User Type', font=('times new roman', 12))
+    user_type_label.grid(row=4, column=2, padx=20, pady=10, sticky='w')
+
+    user_type_combobox = ttk.Combobox(detail_frame, values=('Admin', 'Employee'),
+                                       font=('times new roman', 12), width=18,
+                                       state='readonly')
+    user_type_combobox.set('Select User Type')
+    user_type_combobox.grid(row=4, column=3)
+
+    salary_label = Label(detail_frame, text='Salary', font=('times new roman', 12))
+    salary_label.grid(row=3, column=4, padx=20, pady=10, sticky='w')
+    salary_entry = Entry(detail_frame, font=('times new roman', 12), bg='light yellow')
+    salary_entry.grid(row=3, column=5, padx=20, pady=10)
+
+    password_label = Label(detail_frame, text='Password', font=('times new roman', 12))
+    password_label.grid(row=4, column=4, padx=20, pady=10, sticky='w')
+    password_entry = Entry(detail_frame, font=('times new roman', 12), bg='light yellow')
+    password_entry.grid(row=4, column=5, padx=20, pady=10)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,8 +210,8 @@ window = Tk()
 
 
 window.title("Dashboard")
-window.geometry("1270x668+0+0")
-#window.geometry("1524x784+0+0")
+#window.geometry("1270x668+0+0")
+window.geometry("1524x784+0+0")
 #window.resizable(0,0)
 window.configure(bg="white")
 
