@@ -41,19 +41,24 @@ def employee_form():
 
     # this section is to set show all button on Employee Details Page
 
-    show_all_button=Button(search_frame,text='Show All',font=('time new roman',12),width=10,cursor='hand2',fg='white',bg='#0f4d7d')
+    show_all_button=Button(search_frame,text='Show All',font=('time new roman',12),width=10,cursor='hand2',
+                           fg='white',bg='#0f4d7d')
     show_all_button.grid(column=3,row=0)
 
-    # this section is to set Discription Area on Employee Details Page
+    #this section is to set Discription Area on Employee Details Page
 
     horizontal_scrollbar=Scrollbar(top_frame,orient=HORIZONTAL)
     vertical_scrollbar=Scrollbar(top_frame,orient=VERTICAL)
 
     employee_treeview=ttk.Treeview(top_frame,columns=('emid','name','email','gender','dob','contact','employee_type','education','work_shift','address','date_of_join','salary','user_type'),show='headings',
                                    yscrollcommand=vertical_scrollbar.set,xscrollcommand=horizontal_scrollbar.set)
-    horizontal_scrollbar.pack(side=BOTTOM)
-    vertical_scrollbar.pack(side=RIGHT)
-    employee_treeview.pack(pady=10)
+    horizontal_scrollbar.pack(side=TOP,fill=X,pady=(10,0))
+    vertical_scrollbar.pack(side=RIGHT,fill=Y,pady=(10,0))
+    horizontal_scrollbar.config(command=employee_treeview.xview)
+    vertical_scrollbar.config(command=employee_treeview.yview)
+    employee_treeview.pack(pady=10,padx=10)
+
+
 
     employee_treeview.heading('emid',text='ID')
     employee_treeview.heading('name',text='Name')
@@ -84,7 +89,10 @@ def employee_form():
     employee_treeview.column('salary', width=140, anchor='center')
     employee_treeview.column('user_type', width=140, anchor='center')
 
+    #set te putting value lable
 
+    detail_frame=Frame(employee_frame)
+    detail_frame.place(x=0,y=300)
 
 
 
